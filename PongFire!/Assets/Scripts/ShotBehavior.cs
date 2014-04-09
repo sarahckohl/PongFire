@@ -10,7 +10,7 @@ public class ShotBehavior : MonoBehaviour {
 		// Gives the shot a rotation
 		rigidbody2D.angularVelocity = rotSpeed;
 
-		// Gives forward velocity to shot wen fired
+		// Gives forward velocity to shot when fired
 		rigidbody2D.velocity = transform.right * speed;
 	}
 }
