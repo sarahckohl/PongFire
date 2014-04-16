@@ -22,7 +22,7 @@ public class PaddleControlRight : MonoBehaviour {
 	void Update () {
 		if (!freezeScript.frozen) {
 			// Shootes when key is pressed down
-			if ((Input.GetKey ("u") || Input.GetKey ("o")) && 
+			if ((Input.GetKey ("j")) && 
 		    			Time.time > nextfire) {
 				nextfire = Time.time + firerate;
 				Instantiate (shot, shotSpawn.position, shotSpawn.rotation);

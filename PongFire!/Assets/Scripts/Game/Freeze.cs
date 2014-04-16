@@ -10,12 +10,6 @@ public class Freeze : MonoBehaviour {
 	private float originalAV;
 	private Vector2 originalV;
 	
-	void Update() {
-		if (Input.GetKey("p")) {
-			freeze ();
-		}
-	}
-	
 	// Freezes game, saving values if to be resumed again
 	public void freeze() {
 		frozen = true;

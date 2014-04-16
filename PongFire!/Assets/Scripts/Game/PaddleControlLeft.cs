@@ -21,7 +21,7 @@ public class PaddleControlLeft : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (!freezeScript.frozen) {
-			if ((Input.GetKey ("q") || Input.GetKey ("e")) && 
+			if ((Input.GetKey ("d")) && 
 		    			Time.time > nextfire) {
 				nextfire = Time.time + firerate;
 				Instantiate (shot, shotSpawn.position, shotSpawn.rotation);

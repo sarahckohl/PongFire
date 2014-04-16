@@ -1,10 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class LevelSelectButton : MonoBehaviour {
-	
-	// Public variable so we can set level to go to in editor
-	public int level;
+public class RestartLevel : MonoBehaviour {
 	
 	// So we can go back to our base color
 	private Color baseColor;
@@ -28,7 +25,7 @@ public class LevelSelectButton : MonoBehaviour {
 	// May not be neccessary to change color
 	void OnMouseUp() {
 		renderer.material.color = baseColor;
-		Application.LoadLevel(level);
+		Application.LoadLevel(Application.loadedLevel);
 	}
 	
 	// Not neccesary for this, but may come into play for fancier buttons
