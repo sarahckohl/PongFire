@@ -46,7 +46,7 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\Game\DestroyByBoundary.cs" />
+     <Compile Include="Assets\Scripts\Game\AmmoStash.cs" />
      <Compile Include="Assets\Scripts\Game\Freeze.cs" />
      <Compile Include="Assets\Scripts\Game\FreezeGame.cs" />
      <Compile Include="Assets\Scripts\Game\PaddleControlLeft.cs" />
