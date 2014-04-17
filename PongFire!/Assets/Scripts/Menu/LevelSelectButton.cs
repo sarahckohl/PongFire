@@ -5,7 +5,7 @@ public class LevelSelectButton : MonoBehaviour {
 	
 	// Public variable so we can set level to go to in editor
 	public int level;
-	
+	public Texture2D startImage;
 	/*
 	// So we can go back to our base color
 	private Color baseColor;
@@ -39,7 +39,7 @@ public class LevelSelectButton : MonoBehaviour {
 	*/
 	void OnGUI() {
 
-		if(GUI.Button (new Rect(Screen.width/2 - 50, Screen.height - 150, 100, 50), "START GAME")) {
+		if(GUI.Button (new Rect(Screen.width/2 - 100, Screen.height - 150, 200, 100), startImage)) {
 			Application.LoadLevel(level);
 		}
 		

@@ -2,6 +2,8 @@
 using System.Collections;
 
 public class QuitLevel : MonoBehaviour {
+
+	public Texture2D quitImage;
 	/*
 	// So we can go back to our base color
 	private Color baseColor;
@@ -36,7 +38,7 @@ public class QuitLevel : MonoBehaviour {
 
 	void OnGUI() {
 		if (WinMenu.showMenu == true) {
-			if (GUI.Button (new Rect (Screen.width / 2 + 200, Screen.height / 2, 100, 100), "Quit Game")) {
+			if (GUI.Button (new Rect (Screen.width / 2 - 100, Screen.height / 2 + 150, 200, 100), quitImage)) {
 				WinMenu.showMenu = false;
 				Application.LoadLevel (0);
 			}

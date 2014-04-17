@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class RestartLevel : MonoBehaviour {
-
+	public Texture2D restartImage;
 	/*
 	// So we can go back to our base color
 	private Color baseColor;
@@ -38,7 +38,7 @@ public class RestartLevel : MonoBehaviour {
 
 	void OnGUI() {
 		if (WinMenu.showMenu == true) {
-			if (GUI.Button (new Rect (Screen.width / 2 - 200, Screen.height / 2, 100, 100), "Restart Game")) {
+			if (GUI.Button (new Rect (Screen.width / 2 - 100, Screen.height / 2, 200, 100), restartImage)) {
 				WinMenu.showMenu = false;
 				Application.LoadLevel (2);
 			}
