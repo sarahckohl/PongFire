@@ -12,8 +12,6 @@ public class ApplicationModel : MonoBehaviour {
 	public static bool reload = false;
 	
 	// The bullets mode
-	// 0: infinite
-	// 1: destroy after collision
-	// 2: limited
-	public static int bulletMode = 0;
+	// Whether there are infinite bulletes in the game or a limited number
+	public static bool infinite = false;
 }
