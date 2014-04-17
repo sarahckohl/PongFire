@@ -21,7 +21,7 @@ public class WinMenu : MonoBehaviour {
 		// Buttons
 		foreach(GameObject obj in buttons) {
 			obj.renderer.enabled = true;
-			obj.collider2D.enabled = true;
+			//obj.collider2D.enabled = true;
 		}
 	}
 	
