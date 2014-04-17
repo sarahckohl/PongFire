@@ -5,7 +5,8 @@ public class ReloadButtons : MonoBehaviour {
 	
 	// We set the value this button should have
 	public bool reload;
-	
+
+
 	// So we can go back to our base color
 	private Color baseColor;
 	
@@ -35,4 +36,7 @@ public class ReloadButtons : MonoBehaviour {
 	void OnMouseUp() {
 		ApplicationModel.reload = reload;
 	}
+
+
+		
 }

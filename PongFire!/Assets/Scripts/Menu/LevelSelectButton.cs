@@ -6,6 +6,7 @@ public class LevelSelectButton : MonoBehaviour {
 	// Public variable so we can set level to go to in editor
 	public int level;
 	
+	/*
 	// So we can go back to our base color
 	private Color baseColor;
 	
@@ -35,4 +36,13 @@ public class LevelSelectButton : MonoBehaviour {
 	void OnMouseDown() {
 		renderer.material.color = Color.blue;
 	}
+	*/
+	void OnGUI() {
+
+		if(GUI.Button (new Rect(Screen.width/2 - 50, Screen.height - 150, 100, 50), "START GAME")) {
+			Application.LoadLevel(level);
+		}
+		
+	}
+
 }

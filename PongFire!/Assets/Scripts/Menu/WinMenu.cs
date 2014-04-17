@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class WinMenu : MonoBehaviour {
-
+	public static bool showMenu = false;
 	// Array of texts, used to show or hide text
 	public GameObject text;
 
@@ -11,6 +11,7 @@ public class WinMenu : MonoBehaviour {
 	
 	// Shows all the text and buttons
 	public void show(string winner) {
+		showMenu = true;
 		// Text
 		text.renderer.enabled = true;
 		
@@ -26,6 +27,7 @@ public class WinMenu : MonoBehaviour {
 	
 	// Hides all the text and buttons
 	public void hide() {
+		showMenu = false;
 		// Text
 		text.renderer.enabled = false;
 		

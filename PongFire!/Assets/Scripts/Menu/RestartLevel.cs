@@ -2,7 +2,8 @@
 using System.Collections;
 
 public class RestartLevel : MonoBehaviour {
-	
+
+	/*
 	// So we can go back to our base color
 	private Color baseColor;
 	
@@ -32,4 +33,16 @@ public class RestartLevel : MonoBehaviour {
 	void OnMouseDown() {
 		renderer.material.color = Color.blue;
 	}
+*/
+
+
+	void OnGUI() {
+		if (WinMenu.showMenu == true) {
+			if (GUI.Button (new Rect (Screen.width / 2 - 200, Screen.height / 2, 100, 100), "Restart Game")) {
+				WinMenu.showMenu = false;
+				Application.LoadLevel (2);
+			}
+		}
+	}
+
 }
