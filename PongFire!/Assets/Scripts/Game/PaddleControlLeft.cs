@@ -29,7 +29,6 @@ public class PaddleControlLeft : MonoBehaviour {
 	void Start() {
 		arcPaddle = ApplicationModel.isArc;
 		baseX = transform.position.x;
-		//arcPaddle = 1;
 	}
 	
 	// Update is called once per frame
@@ -42,7 +41,6 @@ public class PaddleControlLeft : MonoBehaviour {
 			}
 		
 			straightMovement();
-			
 		
 			// Sets the paddles position to its max when it passes the border
 			if (transform.position.y > yMax) {
