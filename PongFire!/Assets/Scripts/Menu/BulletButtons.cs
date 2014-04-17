@@ -4,7 +4,7 @@ using System.Collections;
 public class BulletButtons : MonoBehaviour {
 	
 	// We set the value this button should have
-	public int bullet;
+	public bool infinite;
 	
 	// So we can go back to our base color
 	private Color baseColor;
@@ -18,21 +18,21 @@ public class BulletButtons : MonoBehaviour {
 	}
 	
 	void FixedUpdate() {
-		if (ApplicationModel.bulletMode == bullet || hover) renderer.material.color = Color.blue;
+		if (ApplicationModel.infinite == infinite || hover) renderer.material.color = Color.blue;
 		else renderer.material.color = baseColor;
 	}
 	
 	void OnMouseEnter() {
-		if (ApplicationModel.bulletMode != bullet) renderer.material.color = Color.blue;
+		if (ApplicationModel.infinite != infinite) renderer.material.color = Color.blue;
 		hover = true;
 	}
 	
 	void OnMouseExit() {
-		if (ApplicationModel.bulletMode != bullet) renderer.material.color = baseColor;
+		if (ApplicationModel.infinite != infinite) renderer.material.color = baseColor;
 		hover = false;
 	}
 	
 	void OnMouseUp() {
-		ApplicationModel.bulletMode = bullet;
+		ApplicationModel.infinite = infinite;
 	}
 }

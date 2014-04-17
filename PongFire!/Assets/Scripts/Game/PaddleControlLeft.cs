@@ -25,7 +25,9 @@ public class PaddleControlLeft : MonoBehaviour {
 	public float maxX, arcValue;
 	private float baseX;
 	
-	
+	// Reload variables
+	private int startingAmmo, ammoPerClip;
+
 	void Start() {
 		arcPaddle = ApplicationModel.isArc;
 		baseX = transform.position.x;
