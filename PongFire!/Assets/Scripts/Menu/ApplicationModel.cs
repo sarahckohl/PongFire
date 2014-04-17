@@ -13,5 +13,10 @@ public class ApplicationModel : MonoBehaviour {
 	
 	// The bullets mode
 	// Whether there are infinite bulletes in the game or a limited number
-	public static bool infinite = false;
+	public static bool infinite = true;
+	
+	// Number of bullets in clip and in game if reload and limited
+	public static int ammoPerClip = 7;
+	public static int numberOfBullets = 28;
+	public static float reloadTime = 1;
 }

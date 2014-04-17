@@ -11,6 +11,8 @@ public class Puck : MonoBehaviour {
 	
 	// Performs action when Collision happens
 	void OnCollisionEnter2D(Collision2D collisionInfo) {
+		audio.Play();
+	
 		if (rightPuck) {
 			if (collisionInfo.gameObject.tag == "Left Goal") {
 				freezeScript.freezeObjects("Right Wins");

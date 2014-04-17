@@ -25,20 +25,50 @@ public class PaddleControlRight : MonoBehaviour {
 	public float maxX, arcValue;
 	private float baseX;
 	
+	// Reload variables
+	public int ammoInMag;
+	private float reloadTime, nextReload;
+	public AmmoStash stash;
+	private int maxAmmoPerMag;
+	
+	// Sound clips and variables
+	public AudioClip clipFire;
+	public AudioClip clipReload;
+	
+	private AudioSource audioFire;
+	private AudioSource audioReload;
+	
+	void Awake() {
+		audioFire = AddAudio(clipFire, false, false, 1);
+		audioReload = AddAudio(clipReload, false, false, 1);
+	}
+	
+	AudioSource AddAudio(AudioClip clip, bool loop, bool playOnAwake, float vol) {
+		AudioSource newAudio = gameObject.AddComponent<AudioSource>();
+		newAudio.clip = clip;
+		newAudio.loop = loop;
+		newAudio.playOnAwake = playOnAwake;
+		newAudio.volume = vol;
+		return newAudio;
+	} 
+	
 	void Start() {
 		arcPaddle = ApplicationModel.isArc;
 		baseX = transform.position.x;
+		reloadTime = ApplicationModel.reloadTime;
+		
+		if (ApplicationModel.reload) {
+			maxAmmoPerMag = ApplicationModel.ammoPerClip;
+			reload();
+		}
+		
+		nextReload = Time.time;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		if (!freezeScript.frozen) {
-			// Shootes when key is pressed down
-			if ((Input.GetKey ("j")) && 
-		    			Time.time > nextfire) {
-				nextfire = Time.time + firerate;
-				Instantiate (shot, shotSpawn.position, shotSpawn.rotation);
-			}
+			if (Time.time > nextReload) gun ();
 			
 			straightMovement();
 
@@ -78,5 +108,47 @@ public class PaddleControlRight : MonoBehaviour {
 		
 		// Uses cos to achieve the arc, -1 to get an accurate position
 		transform.position = new Vector3(baseX - Mathf.Cos(maxX*arcPercent) + 1, transform.position.y, transform.position.z);
+	}
+	
+	// All keys related to the gun
+	void gun() {
+		if ((Input.GetKey ("j")) && 
+		    Time.time > nextfire) {
+			if (ApplicationModel.reload) {
+				if (stash.ammoInStash > 0) {
+					if(ammoInMag == 0) {
+						audioReload.Play ();
+						reload ();
+					}
+					else {
+						fire ();
+						ammoInMag--;
+					}
+				}
+			} else {
+				fire ();
+			}
+		}
+		
+		if (Input.GetKey ("l") && stash.ammoInStash > 0 && ammoInMag < maxAmmoPerMag) {
+			audioReload.Play ();
+			reload ();
+		}
+	}
+	
+	void fire() {
+		if (!ApplicationModel.infinite && !ApplicationModel.reload) stash.ammoInStash--;
+		nextfire = Time.time + firerate;
+		Instantiate (shot, shotSpawn.position, shotSpawn.rotation);
+		audioFire.Play ();
+	}
+	
+	// Fills magazine until full or no more ammo is in stash
+	void reload() {
+		nextReload = Time.time + reloadTime;
+		while (ammoInMag < maxAmmoPerMag && stash.ammoInStash > 0) {
+			if (!ApplicationModel.infinite) stash.ammoInStash--;
+			ammoInMag++;
+		}
 	}
 }
