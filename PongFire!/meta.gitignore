@@ -1,6 +1,3 @@
-#Meta files
-*.meta
-
 #Build and Runtime directories
 /Library/*
 /Temp/*
