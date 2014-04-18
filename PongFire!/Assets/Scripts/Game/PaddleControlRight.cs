@@ -27,6 +27,7 @@ public class PaddleControlRight : MonoBehaviour {
 	private float reloadTime, nextReload;
 	public AmmoStash stash;
 	private int maxAmmoPerMag;
+	public AmmoTracker track;
 	
 	// Sound clips and variables
 	public AudioClip clipFire;
@@ -109,15 +110,15 @@ public class PaddleControlRight : MonoBehaviour {
 		if ((Input.GetKey ("left")) && 
 		    Time.time > nextfire) {
 			if (ApplicationModel.reload) {
-				if (stash.ammoInStash > 0) {
-					if(ammoInMag == 0) {
+				if(ammoInMag == 0) {
+					if (stash.ammoInStash > 0) {
 						audioReload.Play ();
 						reload ();
-					}
-					else {
+					} else {
 						fire ();
-						ammoInMag--;
 					}
+				} else {
+					fire ();
 				}
 			} else {
 				fire ();
@@ -131,10 +132,14 @@ public class PaddleControlRight : MonoBehaviour {
 	}
 	
 	void fire() {
-		if (!ApplicationModel.infinite && !ApplicationModel.reload) stash.ammoInStash--;
-		nextfire = Time.time + firerate;
-		Instantiate (shot, shotSpawn.position, shotSpawn.rotation);
-		audioFire.Play ();
+		if (ammoInMag + stash.ammoInStash > 0) {
+			if (!ApplicationModel.infinite && !ApplicationModel.reload) stash.ammoInStash--;
+			else ammoInMag--;
+			nextfire = Time.time + firerate;
+			Instantiate (shot, shotSpawn.position, shotSpawn.rotation);
+			track.updateAmmo();
+			audioFire.Play ();
+		}
 	}
 	
 	// Fills magazine until full or no more ammo is in stash
@@ -144,5 +149,6 @@ public class PaddleControlRight : MonoBehaviour {
 			if (!ApplicationModel.infinite) stash.ammoInStash--;
 			ammoInMag++;
 		}
+		track.updateAmmo();
 	}
 }

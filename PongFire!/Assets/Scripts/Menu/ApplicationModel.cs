@@ -11,7 +11,7 @@ public class ApplicationModel : MonoBehaviour {
 	public static bool infinite = true;
 	
 	// Number of bullets in clip and in game if reload and limited
-	public static int ammoPerClip = 7;
-	public static int numberOfBullets = 28;
+	public static int ammoPerClip = 5;
+	public static int numberOfBullets = 20;
 	public static float reloadTime = 1;
 }
