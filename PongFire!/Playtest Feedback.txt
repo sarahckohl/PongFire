@@ -1,0 +1,30 @@
+My updates:
+-I went ahead and switched P2's controls to arrow keys as discussed.  This was a no-brainer, I don't know where I got the ijkl idea.
+-Let's call them Red and Blue or P1 and P2 rather than left and right :)
+-(IMPORTANT!)I moved paddles forward and tried to playtest with the "soccer" (paddle can block in the middle of the board) idea.  This feels like it's going to work well, but right now the paddles can block about 75% of the goal line which is too much and will make it too hard to win.  Francis, go back to the trig you used and give the arcs more eccentricity (deeper).  We'rd looking for around 1/4th to 1/3rd coverage.
+--------------
+
+-(IMPORTANT!)Our code says 28 bullets in the stash, and we talked about giving each paddle 14 bullets to start with.  But you're also giving them 7 bullets in their magazine, for a total of 42 total bullets in the game.  Let's tone this down-- only 14 bullets "in the stash".  Is this a bug?  I'm afraid to touch this because I don't want to break your game logic, and it looks like you're passing around this number all over the place.
+
+-Might wanna tone down the magazine and bullet amounds to 5 and 20... 5 seems just about perfect with our current friction level!  But maybe we don't need the ammo number to be divisible by magazine size and we could give them like 2 more bullets each.
+
+-(IMPORTANT!)Need to give bullets some friction and/or maybe a force that pushes them away from board center so they dont get stuck quite as easily.  Right now the worst case scenario is when a bullet gets stuck on the vertical for a long time and keeps building up speed until it hits someones puck and fucks them over.  Also in general I think there's still too much bullet chaos on the screen... a few at a time is ok but not more than about a 5.  The intuitive fix here is to basically make an imaginary line down the center that repels the bullets back toward the endzones.
+
+-Maybe remove automatic reload (think Lightgun game rather than FPS, where you need to ALWAYS be conscious of your reload).  I'm not sure about this, the auto-reload is growing on me-- good call Francis!
+
+-Paddle speed actually feels pretty good now that the pucks are slowed down!  We might not need the double-tap feature after all.
+
+- (IMPORTANT!) We need to add a "rapid fire" ability.  Like in Galaga-- spamming the fire button should necesarily reward the player for their button mashing ability-- right now holding down the button gives the same or even slightly better firing rate than spamming.  This is a staple of coin-op arcade shooters.
+
+- Bullets should be caught when they cross endzone (they'll still bounce off paddle when the paddle is in the middle ie in front of the endzone)
+
+-I love the spinning pucks!  It's just like how the pucks spin like crazy in Crossfire!
+
+-(IMPORTANT!)Need magazine and ammo UI ASAP for playtesting this week!  Can't expect our playtesters to understand!
+
+-May want to add beginner/tutorial mode with Laser Sights(?) (don't add this to main mode, will flatten the learning curve too much if players always have perfect aim)
+
+-Our bullets would look nicer with a little strobing alpha-glow around them
+
+-If we finish the stuff above early, I think we should jump ahead and try doing some AI! I started looking into Pong AI, (this game builds on pong, we just need to take Pong AI and add some logic for aiming at pucks).
+Great discussion on different approaches to Pong AI: http://www.gamedev.net/topic/129739-pong-ai/
