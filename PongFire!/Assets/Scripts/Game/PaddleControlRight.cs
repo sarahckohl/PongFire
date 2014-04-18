@@ -82,14 +82,14 @@ public class PaddleControlRight : MonoBehaviour {
 	// For moving paddle up and down
 	void straightMovement() {
 		// Moves paddle when key is pressed or held down
-		if (Input.GetKey ("i")) {
+		if (Input.GetKey ("up")) {
 			rigidbody2D.velocity = new Vector2(0.0f, speed);
-		} else if (Input.GetKey ("k")) {
+		} else if (Input.GetKey ("down")) {
 			rigidbody2D.velocity = new Vector2(0.0f, -speed);
 		}
 	
 		// Stops the paddle when key isn't held down anymore
-		if (Input.GetKeyUp ("i") || Input.GetKeyUp ("k")) {
+		if (Input.GetKeyUp ("up") || Input.GetKeyUp ("down")) {
 			rigidbody2D.velocity = new Vector2 (0.0f, 0.0f);
 		}
 	}
@@ -106,7 +106,7 @@ public class PaddleControlRight : MonoBehaviour {
 	
 	// All keys related to the gun
 	void gun() {
-		if ((Input.GetKey ("j")) && 
+		if ((Input.GetKey ("left")) && 
 		    Time.time > nextfire) {
 			if (ApplicationModel.reload) {
 				if (stash.ammoInStash > 0) {
@@ -124,7 +124,7 @@ public class PaddleControlRight : MonoBehaviour {
 			}
 		}
 		
-		if (Input.GetKey ("l") && stash.ammoInStash > 0 && ammoInMag < maxAmmoPerMag) {
+		if (Input.GetKey ("right") && stash.ammoInStash > 0 && ammoInMag < maxAmmoPerMag) {
 			audioReload.Play ();
 			reload ();
 		}

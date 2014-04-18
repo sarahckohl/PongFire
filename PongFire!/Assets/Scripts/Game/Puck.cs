@@ -15,11 +15,11 @@ public class Puck : MonoBehaviour {
 	
 		if (rightPuck) {
 			if (collisionInfo.gameObject.tag == "Left Goal") {
-				freezeScript.freezeObjects("Right Wins");
+				freezeScript.freezeObjects("P2 Wins");
 			}
 		} else {
 		 	if (collisionInfo.gameObject.tag == "Right Goal") {
-				freezeScript.freezeObjects("Left Wins");
+				freezeScript.freezeObjects("P1 Wins");
 		 	}
 		 }		
 	}
