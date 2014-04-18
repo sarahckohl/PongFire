@@ -18,9 +18,6 @@ public class PaddleControlRight : MonoBehaviour {
 	// Script to check if game should be paused
 	public Freeze freezeScript;
 	
-	// The movement the paddle will follow
-	private bool arcPaddle;
-	
 	// Used for horizontal movement and arc
 	public float maxX, arcValue;
 	private float baseX;
@@ -53,7 +50,6 @@ public class PaddleControlRight : MonoBehaviour {
 	} 
 	
 	void Start() {
-		arcPaddle = ApplicationModel.isArc;
 		baseX = transform.position.x;
 		reloadTime = ApplicationModel.reloadTime;
 		
@@ -78,10 +74,8 @@ public class PaddleControlRight : MonoBehaviour {
 			} else if (transform.position.y < yMin) {
 				transform.position = new Vector3(transform.position.x, yMin, transform.position.z);
 			}
-			
-			if (arcPaddle) {
-				arcPosition();
-			}
+
+			arcPosition();
 		}
 	}
 	
