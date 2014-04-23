@@ -4,7 +4,7 @@ using System.Collections;
 public class Puck : MonoBehaviour {
 	
 	// Which puck is it
-	public bool rightPuck;
+	public bool redPuck;
 	
 	// Used to pause game when victory is met
 	public FreezeGame freezeScript;
@@ -13,13 +13,13 @@ public class Puck : MonoBehaviour {
 	void OnCollisionEnter2D(Collision2D collisionInfo) {
 		audio.Play();
 	
-		if (rightPuck) {
-			if (collisionInfo.gameObject.tag == "Left Goal") {
-				freezeScript.freezeObjects("P2 Wins");
+		if (redPuck) {
+			if (collisionInfo.gameObject.tag == "Blue Goal") {
+				freezeScript.freezeObjects("Red Wins");
 			}
 		} else {
-		 	if (collisionInfo.gameObject.tag == "Right Goal") {
-				freezeScript.freezeObjects("P1 Wins");
+		 	if (collisionInfo.gameObject.tag == "Red Goal") {
+				freezeScript.freezeObjects("Blue Wins");
 		 	}
 		 }		
 	}
