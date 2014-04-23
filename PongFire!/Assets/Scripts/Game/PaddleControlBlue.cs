@@ -29,6 +29,8 @@ public class PaddleControlBlue : MonoBehaviour {
 	private int maxAmmoPerMag;
 	public AmmoTracker track;
 	
+	public MagTracker magTrack;
+	
 	// Sound clips and variables
 	public AudioClip clipFire;
 	public AudioClip clipReload;
@@ -130,6 +132,7 @@ public class PaddleControlBlue : MonoBehaviour {
 		nextfire = Time.time + firerate;
 		Instantiate (shot, shotSpawn.position, shotSpawn.rotation);
 		track.updateAmmo();
+		magTrack.updateAmmo(ammoInMag);
 		audioFire.Play ();
 	}
 	
@@ -147,5 +150,6 @@ public class PaddleControlBlue : MonoBehaviour {
 			ammoInMag++;
 		}
 		track.updateAmmo();
+		magTrack.updateAmmo(ammoInMag);
 	}
 }
