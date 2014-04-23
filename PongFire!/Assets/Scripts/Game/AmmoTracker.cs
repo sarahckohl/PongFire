@@ -4,9 +4,9 @@ using System.Collections;
 public class AmmoTracker : MonoBehaviour {
 	
 	// Whether it's left or right paddle
-	public bool leftPaddle;
-	public PaddleControlLeft left;
-	public PaddleControlRight right;
+	public bool bluePaddle;
+	public PaddleControlBlue blue;
+	public PaddleControlRed red;
 	
 	// Ammo stash, to see how much ammo is in it
 	public AmmoStash stashed;
@@ -25,16 +25,16 @@ public class AmmoTracker : MonoBehaviour {
 			if (!ApplicationModel.reload) {
 				mag = Mathf.Infinity.ToString();
 			} else {
-				if (leftPaddle) mag = left.ammoInMag.ToString();
-				else mag = right.ammoInMag.ToString();
+				if (bluePaddle) mag = blue.ammoInMag.ToString();
+				else mag = red.ammoInMag.ToString();
 			}
 		} else {
 			stash = stashed.ammoInStash.ToString();
 			if (!ApplicationModel.reload) {
 				mag = stash;
 			} else {
-				if (leftPaddle) mag = left.ammoInMag.ToString();
-				else mag = right.ammoInMag.ToString();
+				if (bluePaddle) mag = blue.ammoInMag.ToString();
+				else mag = red.ammoInMag.ToString();
 			}
 		}
 		

@@ -1,14 +1,14 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
-public class PaddleControlRight : MonoBehaviour {
-
+public class PaddleControlBlue : MonoBehaviour {
+	
 	// Speed that paddle moves
 	public float speed;
-
+	
 	// Boundary variables
 	public float yMin, yMax;
-
+	
 	// Firing variables
 	public GameObject shot;		// Shots to be fired
 	public Transform shotSpawn;	// Orientation of how the shot should be fired
@@ -59,7 +59,7 @@ public class PaddleControlRight : MonoBehaviour {
 			reload();
 		}
 		
-		nextReload = Time.time;
+		nextReload = 0;
 	}
 	
 	// Update is called once per frame
@@ -68,14 +68,14 @@ public class PaddleControlRight : MonoBehaviour {
 			if (Time.time > nextReload) gun ();
 			
 			straightMovement();
-
+			
 			// Sets the paddles position to its max when it passes the border
 			if (transform.position.y > yMax) {
 				transform.position = new Vector3(transform.position.x, yMax, transform.position.z);
 			} else if (transform.position.y < yMin) {
 				transform.position = new Vector3(transform.position.x, yMin, transform.position.z);
 			}
-
+			
 			arcPosition();
 		}
 	}
@@ -83,14 +83,14 @@ public class PaddleControlRight : MonoBehaviour {
 	// For moving paddle up and down
 	void straightMovement() {
 		// Moves paddle when key is pressed or held down
-		if (Input.GetKey ("up")) {
+		if (Input.GetKey ("w")) {
 			rigidbody2D.velocity = new Vector2(0.0f, speed);
-		} else if (Input.GetKey ("down")) {
+		} else if (Input.GetKey ("s")) {
 			rigidbody2D.velocity = new Vector2(0.0f, -speed);
 		}
-	
+		
 		// Stops the paddle when key isn't held down anymore
-		if (Input.GetKeyUp ("up") || Input.GetKeyUp ("down")) {
+		if (Input.GetKeyUp ("w") || Input.GetKeyUp ("s")) {
 			rigidbody2D.velocity = new Vector2 (0.0f, 0.0f);
 		}
 	}
@@ -99,47 +99,44 @@ public class PaddleControlRight : MonoBehaviour {
 	void arcPosition() {
 		float arcPercent = Mathf.Abs(transform.position.y)/yMax;
 		
-		transform.rotation = Quaternion.Euler (0, 0, 180 + arcValue * -Mathf.Sin(transform.position.y/yMax));
+		transform.rotation = Quaternion.Euler (0, 0, arcValue * Mathf.Sin(transform.position.y/yMax));
 		
 		// Uses cos to achieve the arc, -1 to get an accurate position
-		transform.position = new Vector3(baseX - Mathf.Cos(maxX*arcPercent) + 1, transform.position.y, transform.position.z);
+		transform.position = new Vector3(baseX + Mathf.Cos(maxX*arcPercent) - 1, transform.position.y, transform.position.z);
 	}
 	
 	// All keys related to the gun
 	void gun() {
-		if ((Input.GetKey ("left")) && 
-		    Time.time > nextfire) {
-			if (ApplicationModel.reload) {
-				if(ammoInMag == 0) {
-					if (stash.ammoInStash > 0) {
-						audioReload.Play ();
-						reload ();
-					} else {
-						fire ();
-					}
-				} else {
-					fire ();
+		if ((Input.GetKey ("d")) && Time.time > nextfire) {
+			if (ApplicationModel.reload && ammoInMag == 0) {
+				if (stash.ammoInStash > 0) {
+					reloadWAudio ();
 				}
 			} else {
 				fire ();
 			}
 		}
 		
-		if (Input.GetKey ("right") && stash.ammoInStash > 0 && ammoInMag < maxAmmoPerMag) {
-			audioReload.Play ();
-			reload ();
+		if (ApplicationModel.reload && Input.GetKeyDown ("a") &&
+				stash.ammoInStash > 0 && ammoInMag < maxAmmoPerMag) {
+			reloadWAudio ();
 		}
 	}
 	
 	void fire() {
-		if (ammoInMag + stash.ammoInStash > 0) {
-			if (!ApplicationModel.infinite && !ApplicationModel.reload) stash.ammoInStash--;
-			else ammoInMag--;
-			nextfire = Time.time + firerate;
-			Instantiate (shot, shotSpawn.position, shotSpawn.rotation);
-			track.updateAmmo();
-			audioFire.Play ();
-		}
+		if (!ApplicationModel.infinite && !ApplicationModel.reload) stash.ammoInStash--;
+		else if (ApplicationModel.reload) ammoInMag--;
+			
+		nextfire = Time.time + firerate;
+		Instantiate (shot, shotSpawn.position, shotSpawn.rotation);
+		track.updateAmmo();
+		audioFire.Play ();
+	}
+	
+	// A way to bypass the reload sound playing when game starts
+	void reloadWAudio() {
+		audioReload.Play ();
+		reload ();
 	}
 	
 	// Fills magazine until full or no more ammo is in stash
