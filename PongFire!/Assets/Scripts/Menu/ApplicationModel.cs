@@ -14,4 +14,9 @@ public class ApplicationModel : MonoBehaviour {
 	public static int ammoPerClip = 5;
 	public static int numberOfBullets = 20;
 	public static float reloadTime = 1;
+	
+	void Awake() {
+		audio.Play();
+		DontDestroyOnLoad(gameObject);
+	}
 }

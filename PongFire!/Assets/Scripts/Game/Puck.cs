@@ -21,6 +21,6 @@ public class Puck : MonoBehaviour {
 		 	if (collisionInfo.gameObject.tag == "Red Goal") {
 				freezeScript.freezeObjects("Blue Wins");
 		 	}
-		 }		
+		}		
 	}
 }
