@@ -13,6 +13,7 @@ public class PaddleControlBlue : MonoBehaviour {
 	public GameObject shot;		// Shots to be fired
 	public Transform shotSpawn;	// Orientation of how the shot should be fired
 	public float firerate;		// Limits the number of shots in a timeframe
+	public float rapidfirerate=.3;
 	private float nextfire;		// Tracker for limit
 	
 	// Script to check if game should be paused
@@ -109,6 +110,11 @@ public class PaddleControlBlue : MonoBehaviour {
 	
 	// All keys related to the gun
 	void gun() {
+
+		if ((Input.getKeyUp ("d")) && Time.time > nextfire) {
+				nextfire = Time.time + rapidfirerate;
+				}
+		else
 		if ((Input.GetKey ("d")) && Time.time > nextfire) {
 			if (ApplicationModel.reload && ammoInMag == 0) {
 				if (stash.ammoInStash > 0) {
@@ -135,6 +141,9 @@ public class PaddleControlBlue : MonoBehaviour {
 		magTrack.updateAmmo(ammoInMag);
 		audioFire.Play ();
 	}
+
+
+
 	
 	// A way to bypass the reload sound playing when game starts
 	void reloadWAudio() {
