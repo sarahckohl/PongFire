@@ -13,7 +13,7 @@ public class PaddleControlBlue : MonoBehaviour {
 	public GameObject shot;		// Shots to be fired
 	public Transform shotSpawn;	// Orientation of how the shot should be fired
 	public float firerate;		// Limits the number of shots in a timeframe
-	public float rapidfirerate=.3;
+	public float rapidfirerate;
 	private float nextfire;		// Tracker for limit
 	
 	// Script to check if game should be paused
@@ -111,7 +111,7 @@ public class PaddleControlBlue : MonoBehaviour {
 	// All keys related to the gun
 	void gun() {
 
-		if ((Input.getKeyUp ("d")) && Time.time > nextfire) {
+		if ((Input.GetKeyUp ("d")) && Time.time > nextfire) {
 				nextfire = Time.time + rapidfirerate;
 				}
 		else
