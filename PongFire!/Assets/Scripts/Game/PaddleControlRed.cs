@@ -13,6 +13,7 @@ public class PaddleControlRed: MonoBehaviour {
 	public GameObject shot;		// Shots to be fired
 	public Transform shotSpawn;	// Orientation of how the shot should be fired
 	public float firerate;		// Limits the number of shots in a timeframe
+	public float rapidfirerate;
 	private float nextfire;		// Tracker for limit
 	
 	// Script to check if game should be paused
@@ -117,6 +118,10 @@ public class PaddleControlRed: MonoBehaviour {
 			} else {
 				fire ();
 			}
+		}
+
+		if ((Input.GetKeyUp ("left")) && (nextfire > (Time.time + rapidfirerate))) {
+			nextfire = Time.time + rapidfirerate;
 		}
 		
 		if (ApplicationModel.reload && Input.GetKeyDown ("right") &&

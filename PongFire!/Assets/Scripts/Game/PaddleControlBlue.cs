@@ -111,10 +111,6 @@ public class PaddleControlBlue : MonoBehaviour {
 	// All keys related to the gun
 	void gun() {
 
-		if ((Input.GetKeyUp ("d")) && Time.time > nextfire) {
-				nextfire = Time.time + rapidfirerate;
-				}
-		else
 		if ((Input.GetKey ("d")) && Time.time > nextfire) {
 			if (ApplicationModel.reload && ammoInMag == 0) {
 				if (stash.ammoInStash > 0) {
@@ -124,6 +120,11 @@ public class PaddleControlBlue : MonoBehaviour {
 				fire ();
 			}
 		}
+
+		if ((Input.GetKeyUp ("d")) && (nextfire > (Time.time + rapidfirerate))) {
+			nextfire = Time.time + rapidfirerate;
+		}
+
 		
 		if (ApplicationModel.reload && Input.GetKeyDown ("a") &&
 				stash.ammoInStash > 0 && ammoInMag < maxAmmoPerMag) {
