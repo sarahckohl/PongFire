@@ -40,7 +40,7 @@ public class PaddleControlRed: MonoBehaviour {
 	private AudioSource audioReload;
 	
 	void Awake() {
-		audioFire = AddAudio(clipFire, false, false, 1);
+		audioFire = AddAudio(clipFire, false, false, .2f);
 		audioReload = AddAudio(clipReload, false, false, 1);
 	}
 	
