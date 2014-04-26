@@ -31,7 +31,7 @@ public class MainMenu : MonoBehaviour {
 			}
 			break;
 		case MenuID.HowToPlay:
-			GUI.Label (new Rect(5,0, Screen.width, Screen.height), instructions);
+			GUI.Label (new Rect(15, 0, Screen.width, Screen.height), instructions);
 			if(GUI.Button (new Rect(Screen.width/2 - 100, Screen.height - 150, 200, 100), mainMenuImage)) {
 				currentMenu = MenuID.MainMenu;
 			}
