@@ -30,6 +30,8 @@ public class PaddleControlRed: MonoBehaviour {
 	private int maxAmmoPerMag;
 	public AmmoTracker track;
 	
+	public float pushBack;
+	
 	public MagTracker magTrack;
 	
 	// Sound clips and variables
@@ -156,5 +158,10 @@ public class PaddleControlRed: MonoBehaviour {
 		}
 		track.updateAmmo();
 		magTrack.updateAmmo(ammoInMag);
+	}
+	
+	void OnCollisionEnter2D(Collision2D collisionInfo) {
+		if (collisionInfo.gameObject.tag != "Bullet")
+			collisionInfo.gameObject.rigidbody2D.AddForce(new Vector2(-pushBack, 0.0f));
 	}
 }

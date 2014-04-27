@@ -21,9 +21,9 @@ public class AmmoTracker : MonoBehaviour {
 	// Updates ammo text
 	public void updateAmmo() {
 		if (ApplicationModel.infinite) {
-			stash = Mathf.Infinity.ToString();
+			stash = "∞"; //Mathf.Infinity.ToString();
 			if (!ApplicationModel.reload) {
-				mag = Mathf.Infinity.ToString();
+				mag = "∞"; //Mathf.Infinity.ToString();
 			} else {
 				if (bluePaddle) mag = blue.ammoInMag.ToString();
 				else mag = red.ammoInMag.ToString();
