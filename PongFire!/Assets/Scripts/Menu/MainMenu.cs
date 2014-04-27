@@ -23,10 +23,10 @@ public class MainMenu : MonoBehaviour {
 		switch (currentMenu) {
 		case MenuID.MainMenu :
 			//Main Menu is showing
-			if(GUI.Button (new Rect(Screen.width/2 - 100, Screen.height - 300, 200, 100), startImage)) {
+			if(GUI.Button (new Rect(Screen.width/2 - 100, Screen.height - 375, 200, 100), startImage)) {
 				Application.LoadLevel(level);
 			}
-			if(GUI.Button (new Rect(Screen.width/2 - 100, Screen.height - 150, 200, 100), howImage)) {
+			if(GUI.Button (new Rect(Screen.width/2 - 100, Screen.height - 275, 200, 100), howImage)) {
 				currentMenu = MenuID.HowToPlay;
 			}
 			break;
