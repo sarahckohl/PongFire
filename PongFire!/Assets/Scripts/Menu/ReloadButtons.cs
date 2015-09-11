@@ -15,21 +15,21 @@ public class ReloadButtons : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
-		baseColor = renderer.material.color;
+		baseColor = GetComponent<Renderer>().material.color;
 	}
 	
 	void FixedUpdate() {
-		if (ApplicationModel.reload == reload || hover) renderer.material.color = Color.blue;
-		else renderer.material.color = baseColor;
+		if (ApplicationModel.reload == reload || hover) GetComponent<Renderer>().material.color = Color.blue;
+		else GetComponent<Renderer>().material.color = baseColor;
 	}
 	
 	void OnMouseEnter() {
-		if (ApplicationModel.reload != reload) renderer.material.color = Color.blue;
+		if (ApplicationModel.reload != reload) GetComponent<Renderer>().material.color = Color.blue;
 		hover = true;
 	}
 	
 	void OnMouseExit() {
-		if (ApplicationModel.reload != reload) renderer.material.color = baseColor;
+		if (ApplicationModel.reload != reload) GetComponent<Renderer>().material.color = baseColor;
 		hover = false;
 	}
 	

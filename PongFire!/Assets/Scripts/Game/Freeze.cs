@@ -13,18 +13,18 @@ public class Freeze : MonoBehaviour {
 	// Freezes game, saving values if to be resumed again
 	public void freeze() {
 		frozen = true;
-		originalAV = rigidbody2D.angularVelocity;
-		originalV = rigidbody2D.velocity;
+		originalAV = GetComponent<Rigidbody2D>().angularVelocity;
+		originalV = GetComponent<Rigidbody2D>().velocity;
 		
-		rigidbody2D.angularVelocity = 0;
-		rigidbody2D.velocity = new Vector2(0.0f, 0.0f);
+		GetComponent<Rigidbody2D>().angularVelocity = 0;
+		GetComponent<Rigidbody2D>().velocity = new Vector2(0.0f, 0.0f);
 	}
 	
 	// Unfreezes game, resuming original state
 	public void unFreeze() {
 		frozen = false;
 		
-		rigidbody2D.angularVelocity = originalAV;
-		rigidbody2D.velocity = originalV;
+		GetComponent<Rigidbody2D>().angularVelocity = originalAV;
+		GetComponent<Rigidbody2D>().velocity = originalV;
 	}
 }

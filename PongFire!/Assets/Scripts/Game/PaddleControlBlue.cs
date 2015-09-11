@@ -72,7 +72,7 @@ public class PaddleControlBlue : MonoBehaviour {
 		if (!freezeScript.frozen) {
 			if (Time.time > nextReload) gun ();
 			
-			straightMovement();
+			//straightMovement();
 			
 			// Sets the paddles position to its max when it passes the border
 			if (transform.position.y > yMax) {
@@ -89,14 +89,14 @@ public class PaddleControlBlue : MonoBehaviour {
 	void straightMovement() {
 		// Moves paddle when key is pressed or held down
 		if (Input.GetKey ("w")) {
-			rigidbody2D.velocity = new Vector2(0.0f, speed);
+			GetComponent<Rigidbody2D>().velocity = new Vector2(0.0f, speed);
 		} else if (Input.GetKey ("s")) {
-			rigidbody2D.velocity = new Vector2(0.0f, -speed);
+			GetComponent<Rigidbody2D>().velocity = new Vector2(0.0f, -speed);
 		}
 		
 		// Stops the paddle when key isn't held down anymore
 		if (Input.GetKeyUp ("w") || Input.GetKeyUp ("s")) {
-			rigidbody2D.velocity = new Vector2 (0.0f, 0.0f);
+			GetComponent<Rigidbody2D>().velocity = new Vector2 (0.0f, 0.0f);
 		}
 	}
 	
@@ -167,6 +167,6 @@ public class PaddleControlBlue : MonoBehaviour {
 	
 	void OnCollisionEnter2D(Collision2D collisionInfo) {
 		if (collisionInfo.gameObject.tag != "Bullet")
-			collisionInfo.gameObject.rigidbody2D.AddForce(new Vector2(pushBack, 0.0f));
+			collisionInfo.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(pushBack, 0.0f));
 	}
 }

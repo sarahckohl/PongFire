@@ -14,21 +14,21 @@ public class BulletButtons : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
-		baseColor = renderer.material.color;
+		baseColor = GetComponent<Renderer>().material.color;
 	}
 	
 	void FixedUpdate() {
-		if (ApplicationModel.infinite == infinite || hover) renderer.material.color = Color.blue;
-		else renderer.material.color = baseColor;
+		if (ApplicationModel.infinite == infinite || hover) GetComponent<Renderer>().material.color = Color.blue;
+		else GetComponent<Renderer>().material.color = baseColor;
 	}
 	
 	void OnMouseEnter() {
-		if (ApplicationModel.infinite != infinite) renderer.material.color = Color.blue;
+		if (ApplicationModel.infinite != infinite) GetComponent<Renderer>().material.color = Color.blue;
 		hover = true;
 	}
 	
 	void OnMouseExit() {
-		if (ApplicationModel.infinite != infinite) renderer.material.color = baseColor;
+		if (ApplicationModel.infinite != infinite) GetComponent<Renderer>().material.color = baseColor;
 		hover = false;
 	}
 	

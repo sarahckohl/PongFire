@@ -20,18 +20,18 @@ public class ShotBehavior : MonoBehaviour {
 		timeMade = Time.time;
 	
 		// Gives the shot a rotation
-		rigidbody2D.angularVelocity = rotSpeed;
+		GetComponent<Rigidbody2D>().angularVelocity = rotSpeed;
 
 		// Gives forward velocity to shot when fired
-		rigidbody2D.velocity = transform.right * speed;
+		GetComponent<Rigidbody2D>().velocity = transform.right * speed;
 	}
 	
 	void Update() {
 		if (!powerLess && (timeMade + lifeTime < Time.time)) {
 			GetComponent<SpriteRenderer>().sprite = bulletSprite[1];
 			gameObject.layer = LayerMask.NameToLayer("Powerless Bullet");
-			rigidbody2D.angularVelocity = rotSpeed/2;
-			rigidbody2D.velocity = new Vector2((transform.position.x/Mathf.Abs(transform.position.x)) * speed/3, rigidbody2D.velocity.y/2);
+			GetComponent<Rigidbody2D>().angularVelocity = rotSpeed/2;
+			GetComponent<Rigidbody2D>().velocity = new Vector2((transform.position.x/Mathf.Abs(transform.position.x)) * speed/3, GetComponent<Rigidbody2D>().velocity.y/2);
 			powerLess = true;
 		}
 	}

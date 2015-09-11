@@ -26,7 +26,7 @@ public class Puck : MonoBehaviour {
 	
 	// Performs action when Collision happens
 	void OnCollisionEnter2D(Collision2D collisionInfo) {
-		audio.Play();
+		GetComponent<AudioSource>().Play();
 	
 		if (redPuck) {
 			if (collisionInfo.gameObject.tag == "Blue Goal") {

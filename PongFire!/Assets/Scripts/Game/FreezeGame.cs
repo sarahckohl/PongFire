@@ -16,7 +16,7 @@ public class FreezeGame : MonoBehaviour {
 			freeze.freeze();
 		
 		// Renders the transparent foreground
-		renderer.enabled = true;
+		GetComponent<Renderer>().enabled = true;
 		
 		// Shows text
 		menu.show (text);
@@ -32,7 +32,7 @@ public class FreezeGame : MonoBehaviour {
 			freeze.unFreeze();
 		
 		// Disables the transparent foreground
-		renderer.enabled = false;
+		GetComponent<Renderer>().enabled = false;
 		
 		// Hides text
 		menu.hide ();

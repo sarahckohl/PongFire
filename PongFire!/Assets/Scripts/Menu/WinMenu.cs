@@ -13,14 +13,14 @@ public class WinMenu : MonoBehaviour {
 	public void show(string winner) {
 		showMenu = true;
 		// Text
-		text.renderer.enabled = true;
+		text.GetComponent<Renderer>().enabled = true;
 		
 		// Change Text to reflect what we need
 		text.GetComponent<TextMesh>().text = winner;
 		
 		// Buttons
 		foreach(GameObject obj in buttons) {
-			obj.renderer.enabled = true;
+			obj.GetComponent<Renderer>().enabled = true;
 			//obj.collider2D.enabled = true;
 		}
 	}
@@ -29,12 +29,12 @@ public class WinMenu : MonoBehaviour {
 	public void hide() {
 		showMenu = false;
 		// Text
-		text.renderer.enabled = false;
+		text.GetComponent<Renderer>().enabled = false;
 		
 		// Buttons
 		foreach(GameObject obj in buttons) {
-			obj.renderer.enabled = false;
-			obj.collider2D.enabled = false;
+			obj.GetComponent<Renderer>().enabled = false;
+			obj.GetComponent<Collider2D>().enabled = false;
 		}
 	}
 }

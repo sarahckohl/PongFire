@@ -89,14 +89,14 @@ public class PaddleControlRed: MonoBehaviour {
 	void straightMovement() {
 		// Moves paddle when key is pressed or held down
 		if (Input.GetKey ("up")) {
-			rigidbody2D.velocity = new Vector2(0.0f, speed);
+			GetComponent<Rigidbody2D>().velocity = new Vector2(0.0f, speed);
 		} else if (Input.GetKey ("down")) {
-			rigidbody2D.velocity = new Vector2(0.0f, -speed);
+			GetComponent<Rigidbody2D>().velocity = new Vector2(0.0f, -speed);
 		}
 	
 		// Stops the paddle when key isn't held down anymore
 		if (Input.GetKeyUp ("up") || Input.GetKeyUp ("down")) {
-			rigidbody2D.velocity = new Vector2 (0.0f, 0.0f);
+			GetComponent<Rigidbody2D>().velocity = new Vector2 (0.0f, 0.0f);
 		}
 	}
 	
@@ -162,6 +162,6 @@ public class PaddleControlRed: MonoBehaviour {
 	
 	void OnCollisionEnter2D(Collision2D collisionInfo) {
 		if (collisionInfo.gameObject.tag != "Bullet")
-			collisionInfo.gameObject.rigidbody2D.AddForce(new Vector2(-pushBack, 0.0f));
+			collisionInfo.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(-pushBack, 0.0f));
 	}
 }

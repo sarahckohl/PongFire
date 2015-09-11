@@ -16,7 +16,7 @@ public class ApplicationModel : MonoBehaviour {
 	public static float reloadTime = 1;
 	
 	void Awake() {
-		audio.Play();
+		GetComponent<AudioSource>().Play();
 		DontDestroyOnLoad(gameObject);
 	}
 }
