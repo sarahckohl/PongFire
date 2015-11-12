@@ -22,6 +22,7 @@ public class PaddleControlBlue : MonoBehaviour {
 	// Used for horizontal movement and arc
 	public float maxX, arcValue;
 	private float baseX;
+    public float  baseXoffset=10f;
 	
 	// Reload variables
 	public int ammoInMag;
